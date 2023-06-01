@@ -3,6 +3,7 @@ import cors from 'cors';
 import connection from './db/connection.js';
 import dotenv from 'dotenv';
 import Card from './models/Card.js';
+import Cart from './models/Cart.js';
 
 const app = express()
 app.use(express.json())
@@ -11,7 +12,7 @@ app.use(cors());
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
-
+/*----- Card Routes -----*/
 /*----- Get Routes -----*/
 
 //Find all cards
@@ -66,6 +67,31 @@ app.get('/similar/:similar', (req, res) => {
     .catch((err) => {
         res.status(404);
         res.send({status: 404, message: 'data not found'});
+    })
+})
+
+/*----- Cart Routes -----*/
+
+/*----- GET Routes -----*/
+app.get('/cart', (req, res) => {
+    Cart.find({})
+    .then((response) => {
+        res.status(200);
+        res.send(response);
+    })
+    .catch((err) => {
+        res.status(404);
+        res.send({status: 404, message: 'data not found'})
+    })
+})
+
+/*----- POST Routes -----*/
+app.post('/cart/add', (req, res) => {
+    Cart.deleteMany({})
+    .then((response) => {
+        Cart.create(req.body);
+        res.status(200);
+        res.send({status: 200, message: "An item was added to your cart"});
     })
 })
 
