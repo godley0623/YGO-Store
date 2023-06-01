@@ -16,7 +16,7 @@ const itemSchema = mongoose.Schema({
 })
 
 const cartSchema = mongoose.Schema({
-    cart: itemSchema
+    cart: Object
 })
 
 const Cart = mongoose.model('Cart', cartSchema);
