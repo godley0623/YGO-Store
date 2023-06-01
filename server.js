@@ -95,6 +95,15 @@ app.post('/cart/add', (req, res) => {
     })
 })
 
+/*----- Delete -----*/
+app.delete('/cart/delete', (req, res) => {
+    Cart.deleteMany({})
+    .then((response) => {
+        res.status(200);
+        res.send({status: 200, message: "The cart was emptied"});
+    })
+})
+
 /*----- Running the server -----*/
 app.listen(PORT, () => {
     console.log('Server is running');
