@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const cardSchema = new mongoose.Schema({
+export const cardSchema = new mongoose.Schema({
     id: {
         type: Number,
         required: [true, 'An ID is requried']

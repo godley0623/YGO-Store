@@ -4,6 +4,7 @@ import connection from './db/connection.js';
 import dotenv from 'dotenv';
 import Card from './models/Card.js';
 import Cart from './models/Cart.js';
+import Deck from './models/Deck.js';
 
 const app = express()
 app.use(express.json())
@@ -101,6 +102,34 @@ app.delete('/cart/delete', (req, res) => {
     .then((response) => {
         res.status(200);
         res.send({status: 200, message: "The cart was emptied"});
+    })
+})
+
+/*----- Deck Routes -----*/
+
+/*----- POST Routes -----*/
+app.post('/deck/add', (req, res) => {
+    Deck.create(req.body)
+    .then((response) => {
+        res.status(200);
+        res.send({status: 200, message: "Deck was createed"});
+    })
+    .catch((err) => {
+        res.status(404);
+        res.send({status: 404, message: "Data not found"});
+    })
+})
+
+/*----- GET Routes -----*/
+app.get('/deck', (req, res) => {
+    Deck.find({})
+    .then((response) => {
+        res.status(200);
+        res.send(response);
+    })
+    .catch((err) => {
+        res.status(404);
+        res.send({status: 404, message: "Data not found"});
     })
 })
 
