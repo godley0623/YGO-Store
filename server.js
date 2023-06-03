@@ -133,6 +133,18 @@ app.get('/deck', (req, res) => {
     })
 })
 
+app.get('/decklist/:name', (req, res) => {
+    Deck.findOne( {name: req.params.name} )
+    .then((response) => {
+        res.status(200);
+        res.send(response);
+    })
+    .catch((err) => {
+        res.status(404);
+        res.send({status: 404, message: "Data not found"});
+    })
+})
+
 /*----- Running the server -----*/
 app.listen(PORT, () => {
     console.log('Server is running');
