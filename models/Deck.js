@@ -6,13 +6,9 @@ const deckSchema = new mongoose.Schema({
         type: String,
         required: [true, 'A name is required']
     },
-    main_deck_list: {
+    deck_list: {
         type: Array,
-        required: [true, 'A main deck list is required']
-    },
-    extra_deck_list: {
-        type: Array,
-        required: true
+        required: [true, 'A deck list is required']
     }
 })
 
