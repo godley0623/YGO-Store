@@ -7,8 +7,8 @@ https://ygo-store-backend.herokuapp.com/
 A fake online card store with a deck making feature
 
 # Technology Used  
--Node
--MongoDB
+-Node  
+-MongoDB  
 -Javascript  
 
 # API Used  
