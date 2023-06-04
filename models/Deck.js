@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import { cardSchema } from './Card.js';
 
 const deckSchema = new mongoose.Schema({
     name: {
