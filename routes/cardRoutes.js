@@ -45,6 +45,21 @@ export function cardRoutes (app) {
         })
     })
 
+    //Find a Card by it's exact name
+    app.get('/name/exact/:name', (req, res) => {
+        let name = req.params.name;
+        Card.find( {name: name } )
+        .then((response) => {
+            console.log(response)
+            res.status(200);
+            res.send(response);
+        })
+        .catch((err) => {
+            res.status(404);
+            res.send({status: 404, message: 'data not found'});
+        })
+    })
+
     //Find Cards if they contain the same characters in their name
     app.get('/similar/:similar', (req, res) => {
         let similar = req.params.similar;
