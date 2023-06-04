@@ -35,7 +35,6 @@ export function cardRoutes (app) {
         let name = req.params.name;
         Card.find( {name: {$regex: `${name}`, $options: 'i'} } )
         .then((response) => {
-            console.log(response)
             res.status(200);
             res.send(response);
         })
